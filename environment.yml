@@ -4,7 +4,7 @@ channels:
   - defaults
 dependencies:
   - pip
-  - ipyleflet
+  - ipyleaflet
   - ipywidgets
   - localtileserver
   - ipyfilechooser
