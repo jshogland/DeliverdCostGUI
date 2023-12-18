@@ -26,5 +26,7 @@ dependencies:
   - shapely>=2.0
   - twine
   - xarray
+  - osmnx
+  - py3dep
   - pip:
       - raster-tools
