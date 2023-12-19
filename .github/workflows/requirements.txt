@@ -21,3 +21,4 @@ ipyleaflet
 ipywidgets
 localtileserver
 ipyfilechooser
+voila
