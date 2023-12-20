@@ -4,7 +4,8 @@ import os, time
 import geopandas as gpd
 import numpy as np
 from dask.diagnostics import ProgressBar
-from shapely.geometry import box 
+import shapely
+from shapely.geometry import box
 import osmnx as ox
 import pandas
 import numpy as np
@@ -16,8 +17,8 @@ import warnings
 warnings.filterwarnings("ignore")
 
 #specify paths to data layers default demo
-study_area_path = None
-lyr_sawmill_path = None
+study_area_coords = None
+saw_coords = None
 lyr_roads_path = None
 lyr_barriers_path = None
 
@@ -94,13 +95,17 @@ def _run():
     print("Reading the data")
     if not pbar is None: pbar.value=pbar.value+1
 
-    saw=open_vectors(lyr_sawmill_path).data.compute()
-    s_area=open_vectors(study_area_path).data.compute()
-    
+    # saw=open_vectors(lyr_sawmill_path).data.compute()
+    # s_area=open_vectors(study_area_path).data.compute()
+    pnts=shapely.points(saw_coords)
+    polys=shapely.polygons(study_area_coords)
+
+    saw=gpd.GeoDataFrame(geometry=pnts,crs=4326)
+    s_area=gpd.GeoDataFrame(geometry=polys,crs=4326)
+        
     #create bounding box poly
-    ext=saw.union(s_area.unary_union)
-    ext_wgs84=ext.to_crs('EPSG:4326').buffer(0.15)
-    ply=box(*ext_wgs84.total_bounds)
+    ext=saw.union(s_area.unary_union).buffer(0.15)
+    ply=box(*ext.total_bounds)
     
     #get osm data
     osm_rds={'highway':['motorway','trunk','primary','secondary','tertiary','unclassified','residential']}
