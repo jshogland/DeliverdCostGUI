@@ -30,5 +30,6 @@ dependencies:
   - xarray
   - osmnx
   - py3dep
+  - jupyter-server-proxy
   - pip:
       - raster-tools
