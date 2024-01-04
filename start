@@ -1,3 +1,0 @@
-#!/bin/bash
-export LOCALTILESERVER_CLIENT_PREFIX="$JUPYTERHUB_SERVICE_PREFIX/proxy/{port}"
-exec "$@"
