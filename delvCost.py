@@ -53,6 +53,8 @@ cb_o=False
 pbar=None
 log=None
 
+runcnt=1
+
 def get_osm_data(sgeo,osm_dic={'highway':['motorway','trunk','primary','secondary','tertiary','unclassified','residential']},out_crs=None):
     '''
     downloads openstreetmaps data for a specified dictionary of layers and returns a geopandas dataframe
@@ -90,6 +92,7 @@ def _remove_file(path):
     return
      
 def _run():
+    global runcnt
     #get the vectors and rasters objects
     warnings.simplefilter("ignore")
     print("Reading the data")
@@ -232,39 +235,41 @@ def _run():
     sc2=cb_saw_cost*o2
     saw_cost=sc1+sc2
     saw_cost=saw_cost.where(saw_cost>=0,np.nan)
-    _remove_file('d_cost.tif')
-    saw_cost.save('d_cost.tif')
-    outdic['Delivered Cost']='d_cost.tif'
+    _remove_file('d_cost' +str(runcnt)+'.tif')
+    saw_cost.save('d_cost' +str(runcnt)+'.tif')
+    outdic['Delivered Cost ' + str(runcnt)]='d_cost' +str(runcnt)+'.tif'
     add_tr_fr_cost=ht_cost+pf_cost
-    _remove_file('a_cost.tif')
-    add_tr_fr_cost.save('a_cost.tif')
-    outdic['Additional Treatment Cost']='a_cost.tif'
+    _remove_file('a_cost' +str(runcnt)+'.tif')
+    add_tr_fr_cost.save('a_cost' +str(runcnt)+'.tif')
+    outdic['Additional Treatment Cost ' + str(runcnt)]='a_cost' +str(runcnt)+'.tif'
        
     if (cb_o==True):
         print('Saving optional rasters saw, bio, additional cost surfaces, operation surface')
         if not pbar is None: pbar.value=pbar.value+1
         
-        _remove_file('skidder_cost.tif')
-        sk_saw_cost.save('skidder_cost.tif')
-        outdic['Skidder Cost']='skidder_cost.tif'
+        _remove_file('skidder_cost' +str(runcnt)+'.tif')
+        sk_saw_cost.save('skidder_cost' +str(runcnt)+'.tif')
+        outdic['Skidder Cost ' + str(runcnt)]='skidder_cost' +str(runcnt)+'.tif'
 
-        _remove_file('cable_cost.tif')
-        cb_saw_cost.save('cable_cost.tif')
-        outdic['Cable Cost']='cable_cost.tif'                
+        _remove_file('cable_cost' +str(runcnt)+'.tif')
+        cb_saw_cost.save('cable_cost' +str(runcnt)+'.tif')
+        outdic['Cable Cost ' + str(runcnt)]='cable_cost' +str(runcnt)+'.tif'                
 
-        _remove_file('hand_treatment_costs.tif')
-        ht_cost.save('hand_treatment_costs.tif')
-        outdic['Hand Treatment Cost']='hand_treatment_costs.tif'
+        _remove_file('hand_treatment_costs' +str(runcnt)+'.tif')
+        ht_cost.save('hand_treatment_costs' +str(runcnt)+'.tif')
+        outdic['Hand Treatment Cost ' + str(runcnt)]='hand_treatment_costs' +str(runcnt)+'.tif'
 
-        _remove_file('prescribed_fire_costs.tif')
-        pf_cost.save('prescribed_fire_costs.tif')
-        outdic['Prescribed Fire Cost']='prescribed_fire_costs.tif'
+        _remove_file('prescribed_fire_costs' +str(runcnt)+'.tif')
+        pf_cost.save('prescribed_fire_costs' +str(runcnt)+'.tif')
+        outdic['Prescribed Fire Cost ' + str(runcnt)]='prescribed_fire_costs' +str(runcnt)+'.tif'
 
-        _remove_file('potential_harv_system.tif')
-        opr.save('potential_harv_system.tif')
-        outdic['Potential Harvesting System'] = 'potential_harv_system.tif'
+        _remove_file('potential_harv_system' +str(runcnt)+'.tif')
+        opr.save('potential_harv_system' +str(runcnt)+'.tif')
+        outdic['Potential Harvesting System ' + str(runcnt)] = 'potential_harv_system' +str(runcnt)+'.tif'
     
     if not pbar is None: pbar.value=pbar.max
+    
+    runcnt+=1
     
     return outdic
 
