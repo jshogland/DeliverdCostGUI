@@ -270,6 +270,7 @@ def _run():
     if not pbar is None: pbar.value=pbar.max
     
     runcnt+=1
+    print('Finished all processing...')
     
     return outdic
 
