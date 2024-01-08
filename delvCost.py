@@ -145,7 +145,7 @@ def _run():
     if not pbar is None: pbar.value=pbar.value+1
     rds['speed']=rds['highway'].map(h_speed)
     tms=rds.maxspeed.str.slice(0,2)
-    tms=tms.where(tms.str.isnumeric(),24).astype(float)
+    tms=tms.where(tms.str.isnumeric(),25).astype(float)
     rds['speed'].where(rds['maxspeed'].isna(),tms)
     rds['conv']=2*(((1/(rds['speed']*1609.344))*lt_d)/lt_p) #1609.344 converts miles per hour to meters per hour
     
