@@ -10,7 +10,6 @@ dependencies:
   - ipyfilechooser
   - voila
   - affine
-  - build
   - dask
   - dask-geopandas
   - dask-image
@@ -26,10 +25,13 @@ dependencies:
   - rioxarray
   - scipy
   - shapely>=2.0
-  - twine
   - xarray
   - osmnx
   - py3dep
+  - pystac_client
+  - stackstac
+  - sklearn
+  - planetary_computer
   - jupyter-server-proxy
   - pip:
       - raster-tools
