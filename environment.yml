@@ -28,10 +28,10 @@ dependencies:
   - xarray
   - osmnx
   - py3dep
-  - pystac_client
+  - pystac-client
   - stackstac
-  - sklearn
-  - planetary_computer
+  - scikit-learn
+  - planetary-computer
   - jupyter-server-proxy
   - pip:
       - raster-tools
