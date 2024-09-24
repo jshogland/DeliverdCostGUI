@@ -23,7 +23,6 @@ dependencies:
   - shapely>=2.0
   - xarray
   - ipyleaflet
-  - ipywidgets
   - localtileserver=0.7.2
   - ipyfilechooser
   - voila
