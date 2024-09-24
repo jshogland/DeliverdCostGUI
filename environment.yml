@@ -1,5 +1,6 @@
 dependencies:
   - python=3.10
+  - pip
   - affine
   - cfgrib
   - dask<=2024.2.1
