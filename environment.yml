@@ -3,6 +3,7 @@ channels:
   - conda-forge
   - defaults
 dependencies:
+  - python=10.0
   - pip
   - ipyleaflet
   - ipywidgets
