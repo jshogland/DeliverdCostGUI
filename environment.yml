@@ -1,20 +1,14 @@
-﻿name: rstools
-channels:
-  - conda-forge
-  - defaults
 dependencies:
+  - python=3.10
   - pip
-  - ipyleaflet
-  - ipywidgets
-  - localtileserver
-  - ipyfilechooser
-  - voila
   - affine
-  - dask
+  - cfgrib
+  - dask<=2024.2.1
   - dask-geopandas
   - dask-image
   - fiona
   - geopandas
+  - netcdf4
   - numba
   - numpy
   - pandas
@@ -26,6 +20,11 @@ dependencies:
   - scipy
   - shapely>=2.0
   - xarray
+  - ipywidgets
+  - ipyleaflet
+  - localtileserver
+  - ipyfilechooser
+  - voila
   - osmnx
   - py3dep
   - pystac-client
