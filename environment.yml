@@ -1,9 +1,9 @@
 dependencies:
-  - python=3.10
+  - python=3.12.11
   - pip
   - affine
   - cfgrib
-  - dask<=2024.2.1
+  - dask
   - dask-geopandas
   - dask-image
   - fiona
@@ -18,7 +18,7 @@ dependencies:
   - rasterio
   - rioxarray
   - scipy
-  - shapely>=2.0
+  - shapely
   - xarray
   - ipywidgets
   - ipyleaflet
