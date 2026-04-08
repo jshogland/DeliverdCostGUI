@@ -12,7 +12,6 @@ dependencies:
   - numba
   - numpy
   - pandas
-  - pygeos
   - pyogrio
   - pyproj
   - rasterio
