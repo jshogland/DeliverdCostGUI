@@ -13,7 +13,6 @@ dependencies:
   - numpy
   - pandas
   - pyogrio
-  - pyproj
   - rasterio
   - rioxarray
   - scipy
